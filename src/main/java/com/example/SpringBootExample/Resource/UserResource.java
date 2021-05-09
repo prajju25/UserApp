@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.SpringBootExample.Model.LoginRequest;
-import com.example.SpringBootExample.Model.User;
+import com.example.SpringBootExample.Model.UserResponse;
 
 @RestController
 @RequestMapping(path="user/")
@@ -18,5 +18,5 @@ public interface UserResource {
 	public String sendGreet(@PathVariable("name") String name);
 	
 	@PostMapping("/login")
-	public User doLogin(@RequestBody LoginRequest body);
+	public UserResponse doLogin(@RequestBody LoginRequest body);
 }

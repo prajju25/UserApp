@@ -1,19 +1,17 @@
 package com.example.SpringBootExample.Model;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "user")
-public class User {
+@Table(name = "userTable")
+public class UserTable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "user_id")
-    private int user_id;
+    @Column(name = "id")
+    private Long user_id;
     
     @Column(name="user_name")
     private String userName;
@@ -25,16 +23,23 @@ public class User {
     private Date createdAt;
     
     @Column(name ="is_admin")
-    private boolean isAdmin;
+    private int isAdmin;
     
-    @Column(name="order_list")
-    private List<String> orderList = new ArrayList<>();
+    protected UserTable(){}
+    
+	public UserTable(Long user_id, String userName, String password, int isAdmin, Date createdAt) {
+		this.user_id = user_id;
+		this.userName = userName;
+		this.password = password;
+		this.isAdmin = isAdmin;
+		this.createdAt = createdAt;
+	}
 
-	public int getUser_id() {
+	public Long getUser_id() {
 		return user_id;
 	}
 
-	public void setUser_id(int user_id) {
+	public void setUser_id(Long user_id) {
 		this.user_id = user_id;
 	}
 
@@ -62,20 +67,12 @@ public class User {
 		this.createdAt = createdAt;
 	}
 
-	public boolean isAdmin() {
+	public int isAdmin() {
 		return isAdmin;
 	}
 
-	public void setAdmin(boolean isAdmin) {
+	public void setAdmin(int isAdmin) {
 		this.isAdmin = isAdmin;
-	}
-
-	public List<String> getOrderList() {
-		return orderList;
-	}
-
-	public void setOrderList(List<String> orderList) {
-		this.orderList = orderList;
 	}
     
 }
